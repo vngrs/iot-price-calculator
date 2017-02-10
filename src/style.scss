@@ -1,4 +1,52 @@
 body {
-	height: 600px;
-	background: red;
+  background: #2A2C2A;
+  font-size:0.9em;
+  color: #2A2C2A;
+}
+
+table {
+  tbody {
+    tr {
+      width:100vw;
+      th {
+        font-weight: 600;
+        text-align: left;
+        border:1px solid #dedede;
+      }
+      td {
+        height:20px;
+        width:12vw;
+        border: 1px solid #dedede;
+      }
+    }
+  }
+}
+.result_table {
+  background: #fff;
+  color: #2A2C2A;
+  border: 1px solid #dedede;
+  td{
+    border-color: #dedede;
+  }
+  td:first-child {
+    font-weight: 600;
+  }
+  position: absolute;
+  right:8px;
+}
+.input_table {
+  background: #fff;
+  color: #2A2C2A;
+  border: 1px solid #dedede;
+  td{
+    border-color: #dedede;
+  }
+}
+.component_table {
+  background: #fff;
+  color: #2A2C2A;
+  border: 1px solid #dedede;
+  td{
+    border-color: #dedede;
+  }
 }
