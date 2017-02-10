@@ -69,7 +69,7 @@ class InputTable extends Component {
 				key={_.uniqueId()}
 				type="number"
 				name={thisInput.name}
-				onChange={ debounceEventHandler(this.changeInput.bind(this, thisInput.action, thisInput.name), 50) }
+				onChange={ debounceEventHandler(this.changeInput.bind(this, thisInput.action, thisInput.name), 500) }
 				defaultValue={ this.props.inputs[thisInput.name] }
 			/>
     );
@@ -96,7 +96,6 @@ class InputTable extends Component {
 const mapStateToProps = (state) => {
   return {
     inputs: state.inputs,
-		components: state.components
   };
 };
 

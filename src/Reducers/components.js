@@ -6,9 +6,10 @@ const initialState = {
   kinesis_stream_data_streaming: 10,
   lambda_writing_to_firehose_elasticsearch: 10,
   kinesis_firehose_ingesting_data_to_s3: 10
+
 };
 
-function inputs (state = initialState, action) {
+function components (state = initialState, action) {
   switch (action.type) {
     case set_s3_permanent_datastore_action:
       return _.merge(_.cloneDeep(state), { s3_permanent_datastore: action.number });
@@ -25,4 +26,4 @@ function inputs (state = initialState, action) {
   }
   return state;
 }
-export default inputs;
+export default components;
