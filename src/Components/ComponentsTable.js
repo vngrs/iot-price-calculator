@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import _ from 'lodash';
 
+const headings = [
+  "Service",
+  "Role",
+  "# of Instances/ Shard/ Data",
+  "Type",
+  "Price/Instance Unit/Hour",
+  "Hourly Total",
+  "Monthly Total",
+  "Yearly Total"
+];
 const components_table = [
   {
-    text: 'S3 Permanent Datastore',
+    text: 'S3',
+    role: 'Permanent Datastore',
     name: 's3_permanent_datastore',
     type: 'result',
     cb: (state) => 0.25 * (state.inputs.number_of_devices / state.inputs.data_interval),
@@ -15,7 +26,8 @@ const components_table = [
     yearly_total: (state) => 12 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000)
   },
   {
-    text: 'Kinesis Stream Data Streaming',
+    text: 'Kinesis Stream',
+    role: 'Data Streaming',
     name: 'kinesis_stream_data_streaming',
     type: 'result',
     cb: (state) => state.inputs.number_of_devices / state.inputs.data_interval,
@@ -26,7 +38,8 @@ const components_table = [
     yearly_total:(state) => Math.round(12 * (744 * ((Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165)))),
   },
   {
-    text: 'Lambda Writing to Firehose & Elasticsearch',
+    text: 'Lambda',
+    role: 'Writing to Firehose & Elasticsearch',
     name: 'lambda_writing_to_firehose_elasticsearch',
     type: 'result',
     cb: (state) => state.inputs.lambda_count,
@@ -37,7 +50,8 @@ const components_table = [
     yearly_total: (state) => Math.ceil(12 * 744 * (state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064)),
   },
   {
-    text: 'Kinesis Firehose Ingesting Data to S3',
+    text: 'Kinesis Firehose',
+    role: 'Ingesting Data to S3',
     name: 'kinesis_firehose_ingesting_data_to_s3',
     type: 'result',
     cb: (state) => 5 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval)),
@@ -48,7 +62,8 @@ const components_table = [
     yearly_total: (state) => 12 * ((5 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval))) * 0.0584),
   },
   {
-    text: 'EC2 NodeJS - Elasticbeanstalk - Autoscale',
+    text: 'EC2',
+    role: 'NodeJS - Elasticbeanstalk - Autoscale',
     name: 'ec2_nodejs_elasticbeanstalk_autoscale',
     type: 'result',
     cb: (state) => Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500),
@@ -59,7 +74,8 @@ const components_table = [
     yearly_total: (state) => Math.ceil(12 * (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300)))
   },
 	{
-    text: 'Elastic Load Balancer For Elasticbeanstalk (Data transfer between AZs)',
+    text: 'Elastic Load Balancer',
+    role: 'For Elasticbeanstalk (Data transfer between AZs)',
     name: 'elastic_load_balancer',
     type: 'result',
     cb: (state) => state.inputs.number_of_devices / state.inputs.data_interval,
@@ -70,7 +86,8 @@ const components_table = [
     yearly_total: (state) => 12 * ((state.inputs.number_of_devices / state.inputs.data_interval) * 0.12500)
   },
   {
-    text: 'Elasticsearch Data Storage and Kibana (based on 1 months, min 1.6tb storage)',
+    text: 'Elasticsearch',
+    role: 'Data Storage and Kibana (based on 1 months, min 1.6tb storage)',
     name: 'elasticsearch_data_storage',
     type: 'result',
     cb: (state) => Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000),
@@ -81,7 +98,8 @@ const components_table = [
     yearly_total: (state) => Math.round(12 * (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300)))
   },
   {
-    text: 'EMR/Hive Bulk Processing - Daily',
+    text: 'EMR/Hive',
+    role: 'Bulk Processing - Daily',
     name: 'emr_hive_bulk_processing_daily',
     type: 'result',
     cb: (state) => 1,
@@ -112,6 +130,7 @@ class ComponentsTable extends Component {
     return (
 			<tr key={_.uniqueId()}>
 				<td>{thisInput.text}</td>
+        <td>{thisInput.role}</td>
 				<td>{result}</td>
 				<td>{typeOf}</td>
 				<td>{price_instance}</td>
@@ -124,9 +143,14 @@ class ComponentsTable extends Component {
 
 render() {
   const rows = components_table.map(input => this.renderRow(input));
-	return (
-		<table>
+  const table_headings = headings.map(heading => <th key={_.uniqueId()}>{heading}</th>)
+
+  return (
+		<table className="component_table">
 			<tbody>
+      <tr>
+        {table_headings}
+      </tr>
 			{ rows }
 			</tbody>
 		</table>

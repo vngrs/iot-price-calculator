@@ -44,21 +44,21 @@ class InputTable extends Component {
   }
 
   renderRow(thisInput) {
-    let secondTd;
+    let values;
 
     switch(thisInput.type) {
       case 'number_input':
-        secondTd = this.renderNumberInput(thisInput);
+        values = this.renderNumberInput(thisInput);
         break;
       case 'result':
-        secondTd = <div ref={thisInput.name}>{thisInput.cb(this.props.inputs)}</div>
+        values = <div ref={thisInput.name}>{thisInput.cb(this.props.inputs)}</div>
         break;
     }
 
     return (
 			<tr key={_.uniqueId()}>
 				<td>{thisInput.text}</td>
-				<td>{secondTd}</td>
+				<td>{values}</td>
 			</tr>
     );
   }
@@ -83,8 +83,9 @@ class InputTable extends Component {
     const rows = input_table.map(input => this.renderRow(input));
 
     return (
-			<table>
+			<table className="input_table">
 				<tbody>
+        <tr><th>Variables</th></tr>
         {rows}
 				</tbody>
 			</table>
