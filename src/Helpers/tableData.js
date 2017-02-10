@@ -9,13 +9,62 @@ export const headings = [
   "Yearly Total"
 ]
 
-
-export const firstData = [
-  "Data Volume Per Second",
-  "1.000"
+export const variables = [
+  "Variables",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
 ]
 
-export const secondData = [
+export const numberOfDevices = [
+  "Number of Devices",
+  "10.000",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+]
+
+export const dataInterval = [
+  "Data Sending Interval (Sec)",
+  "10",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+]
+
+export const lambdaFunction = [
+  "Lambda Function Count",
+  2,
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+]
+
+export const dataVolumePerSec = [
+  "Data Volume Per Second",
+  "1.000",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+]
+
+export const S3Data = [
   "S3",
   "Permanent Datastore",
   250,
@@ -26,7 +75,7 @@ export const secondData = [
   90
 ]
 
-export const thirdData = [
+export const kinesisStream = [
   "Kinesis Stream",
   "Data Streaming",
   "1.000",
@@ -37,7 +86,7 @@ export const thirdData = [
   "2,048"
 ]
 
-export const fourthData = [
+export const lambdaData = [
   "Lambda",
   "Writing to Firehose & Elasticsearch",
   2,
@@ -48,7 +97,7 @@ export const fourthData = [
   "1,440"
 ]
 
-export const fifthData = [
+export const kinesisFirehose = [
   "Kinesis Firehose",
   "Ingesting Data to S3",
   1250,
@@ -59,7 +108,7 @@ export const fifthData = [
   876
 ]
 
-export const sixthData = [
+export const ec2Data = [
   "EC2",
   "NodeJS - Elasticbeanstalk - Autoscale",
   2,
@@ -70,79 +119,79 @@ export const sixthData = [
   "2,018"
 ]
 
-export const seventhData = [
-"Elastic Load Balancer",
-"For Elasticbeanstalk (Data transfer between AZs)",
-"1.000",
-"GB",
-"0,12500",
-" ",
-125,
-"1.500"
+export const elasticLoadBalancer = [
+  "Elastic Load Balancer",
+  "For Elasticbeanstalk (Data transfer between AZs)",
+  "1.000",
+  "GB",
+  "0,12500",
+  " ",
+  125,
+  "1.500"
 ]
 
-export const eightData = [
-"Elasticsearch",
-"Data Storage and Kibana (based on 1 months, min 1.6tb storage)",
-1,
-"i2.xlarge.elasticsearch",
-"1,31300",
-"1,313",
-977,
-"11.722"
+export const elasticSearch = [
+  "Elasticsearch",
+  "Data Storage and Kibana (based on 1 months, min 1.6tb storage)",
+  1,
+  "i2.xlarge.elasticsearch",
+  "1,31300",
+  "1,313",
+  977,
+  "11.722"
 ]
 
-export const ninthData = [
-"EMR / Hive",
-"Bulk Processing - Daily",
-1,
-"Job",
-"100,00",
-" ",
-100,
-"1.200"
+export const emrHive = [
+  "EMR / Hive",
+  "Bulk Processing - Daily",
+  1,
+  "Job",
+  "100,00",
+  " ",
+  100,
+  "1.200"
 ]
 
 export const totalString = [
-" ",
-" ",
-" ",
-" ",
-" ",
-" ",
-"Total",
-" "
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  "Total",
+  " "
 ]
 
 export const averageMonthlyCost = [
-" ",
-" ",
-" ",
-" ",
-" ",
-" ",
-"Average Monthly Cost",
-"$1.741,18"
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  "Average Monthly Cost",
+  "$1.741,18"
 ]
 
 export const totalYearlyCost = [
-" ",
-" ",
-" ",
-" ",
-" ",
-" ",
-"Total 1 Year Cost",
-"$20.894,18"
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  "Total 1 Year Cost",
+  "$20.894,18"
 ]
 
 export const perDeviceCost = [
-" ",
-" ",
-" ",
-" ",
-" ",
-" ",
-"Per Device Yearly Cost",
-"$2,09"
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+  "Per Device Yearly Cost",
+  "$2,09"
 ]

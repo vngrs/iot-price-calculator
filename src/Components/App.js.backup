@@ -1,0 +1,107 @@
+import React, {Component} from 'react';
+import { headings, variables, numberOfDevices, dataInterval, lambdaFunction, dataVolumePerSec, S3Data, kinesisStream, lambdaData, kinesisFirehose, ec2Data, elasticLoadBalancer, elasticSearch, emrHive, totalString, averageMonthlyCost, totalYearlyCost, perDeviceCost} from '../Helpers/tableData';
+
+class App extends Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return (
+			<table>
+				<tbody>
+					<tr>
+					{headings.map(function(heading, index){
+						return <th key={index}>{heading}</th>
+					})}
+					</tr>
+					<tr>
+						{variables.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{numberOfDevices.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{dataInterval.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{lambdaFunction.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{dataVolumePerSec.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{S3Data.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{kinesisStream.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{lambdaData.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{kinesisFirehose.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{ec2Data.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{elasticLoadBalancer.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{elasticSearch.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{emrHive.map(function(data, index){
+						return <td key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{totalString.map(function(data, index){
+						return <td className="totalString" key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{averageMonthlyCost.map(function(data, index){
+						return <td className="averageMonthly" key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{totalYearlyCost.map(function(data, index){
+						return <td className="totalYearly" key={index}>{data}</td>
+					})}
+					</tr>
+					<tr>
+						{perDeviceCost.map(function(data, index){
+						return <td className="perDevice" key={index}>{data}</td>
+					})}
+					</tr>
+				</tbody>
+			</table>)
+	}
+}
+
+export default App
