@@ -1,7 +1,21 @@
+//variables
+$light_grey: #E9E9ED;
+$dark_grey: #2A2A2A;
+
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Titillium Web', sans-serif;
+font-family: 'Mukta Vaani', sans-serif;
+font-family: 'Dosis', sans-serif;
+*/
+
+//rules
 body {
-  background: #2A2C2A;
-  font-size:0.9em;
+  background:$dark_grey;
+  font-size:0.8em;
   color: #2A2C2A;
+  font-family: 'Roboto', sans-serif;
+  margin:0 20px;
 }
 
 table {
@@ -23,43 +37,71 @@ table {
 }
 
 .input_table {
-  background: darkred;
-  color: #ECEAF1;
-  margin:25px 5px 5px 0;
-  border: 1px solid lighten(darkred, 60%);
+  background:#fff;
+  background: lighten($light_grey,2%);
 
+  color: darken(#fff, 70%);
+  margin:0px 5px 0 0;
+  border-style: solid;
+  border-right-width:0px;
+  border-left-width:0px;
+  border-top-width:0px;
+  border-bottom-width:0;
+  border-color:#fff;
   th {
-    border: 0px solid darken(darkred, 20%);
+    border-width: 0;
   }
   td{
-    border: 0px solid lighten(darkred, 60%);
+    border-width: 0;
   }
 }
 
 .component_table {
-  background: #ECEAF1;
-  color: #2A2C2A;
-  border: 2px solid lighten(#ECEAF1, 50%);
+  border: 10px solid #fff;
+  background: #fff;
+
+  color: darken(#fff, 60%);
+
   td{
-    border-color: #dedede;
+    border-color: lighten($light_grey,5%);
+  }
+  th {
+    border-color: lighten($light_grey,5%);
   }
 }
 
 .result_table {
-  background: #2A2C2A;
-  color: #fff;
-  border: 2px solid lighten(#2A2C2A, 50%);
-  margin:5px 0 5px 5px;
+  background: lighten($light_grey,2%);
+  color: darken(#fff, 60%);
+  margin:0 0 5px 5px;
   td{
     border-right-width:0px;
-    border-left-width:1px;
+    border-left-width:0px;
     border-bottom-width:0px;
-    border-top-width: 1px;
-    border-color:lighten(#2A2C2A, 20%);
+    border-top-width: 0px;
+    border-color:darkred;
   }
   td:first-child {
     font-weight: 600;
   }
   position: absolute;
-  right:8px;
+  right:20px;
+}
+.logo_div {
+  width:100%;
+  margin-bottom:10px;
+  background:darkred;
+  border-bottom: 6px solid $light_grey;
+  border-width: 0 6px 6px 6px;
+  border-style:solid;
+  border-color: $light_grey;
+  border-radius:25px;
+  .vngrs_logo {
+    display: block;
+    width:8%;
+    border: 6px solid $light_grey;
+    border-width: 6px 6px 0 6px;
+    margin: 0 auto 5px;
+    border-radius:25px;
+  }
 }

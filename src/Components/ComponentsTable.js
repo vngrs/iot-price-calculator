@@ -21,9 +21,9 @@ const components_table = [
     cb: (state) => 0.25 * (state.inputs.number_of_devices / state.inputs.data_interval),
 		typeOf: "GB",
 		price_instance: "0.03000",
-    hourly_total: (state) => (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000) / 744,
-    monthly_total: (state) => Math.ceil(0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000),
-    yearly_total: (state) => 12 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000)
+    hourly_total: (state) => ((0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000) / 744).toFixed(2),
+    monthly_total: (state) => (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000).toFixed(2),
+    yearly_total: (state) => (12 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval) * 0.03000)).toFixed(2)
   },
   {
     text: 'Kinesis Stream',
@@ -33,9 +33,9 @@ const components_table = [
     cb: (state) => state.inputs.number_of_devices / state.inputs.data_interval,
 		typeOf:  "request per second",
 		price_instance: "0.03400",
-    hourly_total:(state) => (Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165),
-    monthly_total:(state) => Math.ceil(744 * ((Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165))),
-    yearly_total:(state) => Math.round(12 * (744 * ((Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165)))),
+    hourly_total:(state) => ((Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165)).toFixed(2),
+    monthly_total:(state) => (744 * ((Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165))).toFixed(2),
+    yearly_total:(state) => (12 * (744 * ((Math.max(Math.ceil(state.inputs.lambda_count / 2),Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval) / 5000) * 10 * 0.017) + ((state.inputs.number_of_devices / state.inputs.data_interval) * 60 * 60 / 1000000 * 0.0165)))).toFixed(2),
   },
   {
     text: 'Lambda',
@@ -45,9 +45,9 @@ const components_table = [
     cb: (state) => state.inputs.lambda_count,
 		typeOf: "total lambda function",
 		price_instance: "0.00806",
-    hourly_total: (state) => state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064,
-    monthly_total: (state) => Math.ceil(744 * (state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064)),
-    yearly_total: (state) => Math.ceil(12 * 744 * (state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064)),
+    hourly_total: (state) => (state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064).toFixed(2),
+    monthly_total: (state) => (744 * (state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064)).toFixed(2),
+    yearly_total: (state) => (12 * 744 * (state.inputs.lambda_count * Math.ceil(state.inputs.number_of_devices / state.inputs.data_interval / 5000) * 10 * 0.008064)).toFixed(2),
   },
   {
     text: 'Kinesis Firehose',
@@ -58,20 +58,20 @@ const components_table = [
 		typeOf: "GB",
 		price_instance: "0.05840",
     hourly_total: (state) => "",
-    monthly_total: (state) => (5 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval))) * 0.0584,
-    yearly_total: (state) => 12 * ((5 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval))) * 0.0584),
+    monthly_total: (state) => ((5 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval))) * 0.0584).toFixed(2),
+    yearly_total: (state) => (12 * ((5 * (0.25 * (state.inputs.number_of_devices / state.inputs.data_interval))) * 0.0584)).toFixed(2),
   },
   {
     text: 'EC2',
     role: 'NodeJS - Elasticbeanstalk - Autoscale',
     name: 'ec2_nodejs_elasticbeanstalk_autoscale',
     type: 'result',
-    cb: (state) => Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500),
+    cb: (state) => (state.inputs.number_of_devices / state.inputs.data_interval) / 500,
     typeOf: "c4.large",
     price_instance: 0.11300,
-    hourly_total: (state) => (Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300,
-    monthly_total: (state) => 744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300),
-    yearly_total: (state) => Math.ceil(12 * (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300)))
+    hourly_total: (state) => ((((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300).toFixed(2),
+    monthly_total: (state) => (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300)).toFixed(2),
+    yearly_total: (state) => (12 * (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 500)) * 0.11300))).toFixed(2)
   },
 	{
     text: 'Elastic Load Balancer',
@@ -82,20 +82,20 @@ const components_table = [
     typeOf: "GB",
     price_instance: "0.12500",
     hourly_total: (state) => "",
-    monthly_total: (state) => (state.inputs.number_of_devices / state.inputs.data_interval) * 0.12500,
-    yearly_total: (state) => 12 * ((state.inputs.number_of_devices / state.inputs.data_interval) * 0.12500)
+    monthly_total: (state) => ((state.inputs.number_of_devices / state.inputs.data_interval) * 0.12500).toFixed(2),
+    yearly_total: (state) => (12 * ((state.inputs.number_of_devices / state.inputs.data_interval) * 0.12500)).toFixed(2)
   },
   {
     text: 'Elasticsearch',
     role: 'Data Storage and Kibana (based on 1 months, min 1.6tb storage)',
     name: 'elasticsearch_data_storage',
     type: 'result',
-    cb: (state) => Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000),
+    cb: (state) => (state.inputs.number_of_devices / state.inputs.data_interval) / 1000,
     typeOf: "i2.xlarge.elasticsearch",
     price_instance: "1.31300",
-    hourly_total: (state) => (Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300,
-    monthly_total: (state) => 744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300),
-    yearly_total: (state) => Math.round(12 * (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300)))
+    hourly_total: (state) => (((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300.toFixed(2),
+    monthly_total: (state) => (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300)).toFixed(2),
+    yearly_total: (state) => (12 * (744 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 1.31300))).toFixed(2)
   },
   {
     text: 'EMR/Hive',
@@ -106,8 +106,8 @@ const components_table = [
     typeOf: "Job",
     price_instance: "100.00",
     hourly_total: (state) => "",
-    monthly_total: (state) => (Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 100,
-    yearly_total: (state) => 12 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 100)
+    monthly_total: (state) => ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 100).toFixed(2),
+    yearly_total: (state) => (12 * ((Math.ceil((state.inputs.number_of_devices / state.inputs.data_interval) / 1000)) * 100)).toFixed(2)
   },
 
 ];

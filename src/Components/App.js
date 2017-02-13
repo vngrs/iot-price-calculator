@@ -18,6 +18,9 @@ class App extends Component {
 	render() {
 		return (
 			<div>
+				<div className="logo_div">
+					<img className="vngrs_logo" src="http://vngrs.com/img/logo.png" alt=""/>
+				</div>
 				<InputTable />
 				<ComponentTable />
 				<ResultTable />

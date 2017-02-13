@@ -26,22 +26,22 @@ const input_table = [
     text: 'Data volume per second',
     name: 'data_volume_per_second',
     type: 'result',
-    cb: (state) => state.number_of_devices / state.data_interval
+    cb: (state) => (state.number_of_devices / state.data_interval).toFixed(2)
   }
 ];
 
 function debounceEventHandler(...args) {
   const debounced = _.debounce(...args)
   return function(e, ...args) {
-    e.persist()
+    e.persist();
     return debounced(e, ...args)
-  }
-}
+  };
+};
 
 class InputTable extends Component {
   constructor(props) {
     super(props);
-  }
+  };
 
   renderRow(thisInput) {
     let values;
@@ -51,36 +51,37 @@ class InputTable extends Component {
         values = this.renderNumberInput(thisInput);
         break;
       case 'result':
-        values = <div ref={thisInput.name}>{thisInput.cb(this.props.inputs)}</div>
+        values = <div ref={thisInput.name}>{thisInput.cb(this.props.inputs)}</div>;
         break;
-    }
-
+    };
     return (
-			<tr key={_.uniqueId()}>
+			<tr key={`tr_key_${thisInput.name}`}>
 				<td>{thisInput.text}</td>
 				<td>{values}</td>
 			</tr>
     );
-  }
-
-  renderNumberInput(thisInput) {
+  };
+  renderNumberInput(thisInput, index) {
     return (
 			<input
-				key={_.uniqueId()}
+				key={index}
 				type="number"
 				name={thisInput.name}
 				onChange={ debounceEventHandler(this.changeInput.bind(this, thisInput.action, thisInput.name), 500) }
 				defaultValue={ this.props.inputs[thisInput.name] }
 			/>
     );
-  }
+  };
 
   changeInput(action, name, event) {
     this.props[action](event.target.value);
-  }
+  };
 
   render() {
-    const rows = input_table.map(input => this.renderRow(input));
+    let self = this;
+    const rows = input_table.map(function(input) {
+      return self.renderRow(input);
+    });
 
     return (
 			<table className="input_table">
@@ -91,8 +92,8 @@ class InputTable extends Component {
 			</table>
     );
 
-  }
-}
+  };
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -104,7 +105,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onDevicesChange: (num) => {
       dispatch(set_number_of_devices(num));
-      dispatch()
     },
     onIntervalChange: (num) => {
       dispatch(set_data_interval(num));
