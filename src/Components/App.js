@@ -18,8 +18,21 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<div className="logo_div">
-					<img className="vngrs_logo" src="./src/Assets/VNGRS-Red.png" alt=""/>
+				<div className="nav-container">
+					<nav className="sticky">
+						<div id="logo_small">
+							<a href="http://vngrs.com">
+								<img src="./src/Assets/logo_small.png" alt="VNGRS logo"/>
+							</a>
+						</div>
+						<ul>
+							<li><a href="http://vngrs.com">Home</a></li>
+							<li><a href="http://vngrs.com/#about">About Us</a></li>
+							<li><a href="http://vngrs.com/#join">Join Us</a></li>
+							<li><a href="http://vngrs.com/#start_project">Contact</a></li>
+							<li><a href="http://blog.vngrs.com" target="_blank">Blog</a></li>
+						</ul>
+					</nav>
 				</div>
 				<InputTable />
 				<ComponentTable />
