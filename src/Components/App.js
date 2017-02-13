@@ -19,7 +19,7 @@ class App extends Component {
 		return (
 			<div>
 				<div className="logo_div">
-					<img className="vngrs_logo" src="http://vngrs.com/img/logo.png" alt=""/>
+					<img className="vngrs_logo" src="./src/Assets/VNGRS-Red.png" alt=""/>
 				</div>
 				<InputTable />
 				<ComponentTable />
