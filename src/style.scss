@@ -87,16 +87,12 @@ table {
   border-bottom-left-radius:20px;
   padding:10px;
   width:25vw;
-  td{
-    border-right-width:0px;
-    border-left-width:0px;
-    border-bottom-width:0px;
-    border-top-width: 0px;
-    border-color:$vngrs_red;
-  }
   th,td:first-child {
     font-weight: 800;
     font-size:1.07em;
+    color:darken(#fff,20%);
+  }
+  td{
     color:#fff;
   }
   position: absolute;
