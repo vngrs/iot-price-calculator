@@ -22,7 +22,7 @@ class App extends Component {
 					<nav className="sticky">
 						<div id="logo_small">
 							<a href="http://vngrs.com">
-								<img src="./src/Assets/logo_small.png" alt="VNGRS logo"/>
+								<img src="http://vngrs.com/img/logo_small.png" alt="VNGRS logo"/>
 							</a>
 						</div>
 						<ul>

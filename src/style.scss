@@ -55,7 +55,7 @@ table {
     font-size:1.07em;
     color:darken(#fff,10%);
   }
-  td{
+  td:first-child, td{
     border-width: 0;
     color:#fff;
   }
