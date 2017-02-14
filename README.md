@@ -1,4 +1,4 @@
-# Enerjisa AWS IoT Price Calculator
+# Amazon Web Services IoT Price Calculator
 
 An application for price calculation purpose of Amazon Web Services's IoT's.
 
