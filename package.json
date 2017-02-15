@@ -1,10 +1,9 @@
 {
-  "name": "enerjisa-aws-iot-calculator",
+  "name": "aws-iot-price-calculator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
     "start": "webpack-dev-server",
     "build": "webpack"
   },

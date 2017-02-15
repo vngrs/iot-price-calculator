@@ -19,9 +19,6 @@ function inputs (state = initialState, action) {
     case set_lambda_function_count_action:
       return _.merge(_.cloneDeep(state), { lambda_count: action.number });
       break;
-    case set_data_vol_per_sec_action:
-      return _.merge(_.cloneDeep(state), { data_vol_per_sec: action.number });
-      break;
   }
 
   return state;

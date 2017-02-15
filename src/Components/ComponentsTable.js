@@ -125,7 +125,7 @@ class ComponentsTable extends Component {
         monthly_total = <div>{thisInput.monthly_total(this.props.state)}</div>;
         yearly_total = <div>{thisInput.yearly_total(this.props.state)}</div>
         break;
-    }
+    };
 
     return (
 			<tr key={_.uniqueId()}>
@@ -139,7 +139,7 @@ class ComponentsTable extends Component {
         <td>{yearly_total}</td>
 			</tr>
     );
-  }
+  };
 
 render() {
   const rows = components_table.map(input => this.renderRow(input));
@@ -155,11 +155,11 @@ render() {
 			</tbody>
 		</table>
 	)
-}
-}
+};
+};
 const mapStateToProps = (state) => {
   return {
-    state,
+    state
   };
 };
 export default connect(
