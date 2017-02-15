@@ -12,8 +12,3 @@ export const set_lambda_function_count_action = 'SET_LAMBDA_FUNCTION_COUNT';
 export function set_lambda_function_count(number) {
   return { type: set_lambda_function_count_action, number }
 }
-
-export const set_data_vol_per_sec_action = 'SET_DATA_VOL_PER_SEC';
-export function set_data_vol_per_sec(number) {
-  return { type: set_data_vol_per_sec_action, number }
-}

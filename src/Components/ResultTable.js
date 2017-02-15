@@ -31,7 +31,7 @@ const result_table = [
 class ResultTable extends Component {
   constructor(props) {
     super(props);
-  }
+  };
   renderRow(thisInput) {
     let lastResult;
 
@@ -39,14 +39,14 @@ class ResultTable extends Component {
       case 'result':
         lastResult = <div>{thisInput.lastResult(this.props.state)}</div>;
         break;
-    }
+    };
     return (
       <tr key={_.uniqueId()}>
         <td>{thisInput.text}</td>
         <td>{lastResult}</td>
       </tr>
     );
-  }
+  };
 
   render() {
     const rows = result_table.map(total => this.renderRow(total));
@@ -57,8 +57,8 @@ class ResultTable extends Component {
         </tbody>
       </table>
     )
-  }
-}
+  };
+};
 const mapStateToProps = (state) => {
   return {
     state,
